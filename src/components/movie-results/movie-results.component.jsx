@@ -32,7 +32,7 @@ class MovieResults extends React.Component {
           </div>
         ) : null}
 
-        {fetchedItems.length !== 0 ? (
+        {fetchedItems.length !== 0 && loading === false ? (
           <div>
             {
               fetchedItems.movies.map(item => (
