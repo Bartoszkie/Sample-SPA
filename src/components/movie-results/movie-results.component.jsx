@@ -1,37 +1,57 @@
 import React from "react";
 
+import shortid from 'shortid';
+
 import { connect } from "react-redux";
-import { setMovieResults } from "../../redux/movie-results/movie-results.action";
+import {
+  selectMoviesArray,
+  selectMoviesLoading,
+  selectErrors
+} from "../../redux/movie-results/movie-results.selector";
 
-import MovieCart from "../movie-cart/movie-cart.component";
-
+import { createStructuredSelector } from "reselect";
 import { MovieResultsContainer } from "./movie-results.styles";
 
 class MovieResults extends React.Component {
-  componentDidMount() {
-    const API_KEY = "d14e23d0";
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=avengers`)
-      .then(result => result.json())
-      .then(result => console.log(result))
-      .then(result => setMovieResults(result));
-  }
-
   render() {
+    const { fetchedItems, loading, errors } = this.props;
+
+    console.log("movie-results container: ", fetchedItems.movies);
+
     return (
       <MovieResultsContainer>
-        <MovieCart />
-        <MovieCart />
-        <MovieCart />
-        <MovieCart />
-        <MovieCart />
-        <MovieCart />
+        {loading === true ? (
+          <div>
+            <p>Loading...</p>
+          </div>
+        ) : null}
+
+        {errors !== null ? (
+          <div>
+            <p>No results :(</p>
+          </div>
+        ) : null}
+
+        {fetchedItems.length !== 0 ? (
+          <div>
+            {
+              fetchedItems.movies.map(item => (
+                <div key={shortid.generate()}>{item.Title}</div>
+              ))
+            }
+          </div>
+        ) : null
+        }
+
       </MovieResultsContainer>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-    setMovieResults: (items) => dispatch(setMovieResults(items))
-})
+const mapStateToProps = createStructuredSelector({
+  fetchedItems: selectMoviesArray,
+  loading: selectMoviesLoading,
+  errors: selectErrors
+});
 
-export default connect(null, mapDispatchToProps)(MovieResults);
+export default connect(mapStateToProps)(MovieResults);
