@@ -1,6 +1,8 @@
 import React from "react";
 
-import shortid from 'shortid';
+import shortid from "shortid";
+
+import MovieItem from "../movie-item/movie-item.component";
 
 import { connect } from "react-redux";
 import {
@@ -10,7 +12,12 @@ import {
 } from "../../redux/movie-results/movie-results.selector";
 
 import { createStructuredSelector } from "reselect";
-import { MovieResultsContainer } from "./movie-results.styles";
+import {
+  MovieResultsContainer,
+  LoadingContainer,
+  ResultsContainer
+} from "./movie-results.styles";
+import { H2 } from "../../sass/base/_typography.styles";
 
 class MovieResults extends React.Component {
   render() {
@@ -21,28 +28,30 @@ class MovieResults extends React.Component {
     return (
       <MovieResultsContainer>
         {loading === true ? (
-          <div>
-            <p>Loading...</p>
-          </div>
+          <LoadingContainer>
+            <H2>Loading...</H2>
+          </LoadingContainer>
         ) : null}
 
         {errors !== null ? (
-          <div>
-            <p>No results :(</p>
-          </div>
+          <LoadingContainer>
+            <H2>No results :(</H2>
+          </LoadingContainer>
         ) : null}
 
         {fetchedItems.length !== 0 && loading === false ? (
-          <div>
-            {
-              fetchedItems.movies.map(item => (
-                <div key={shortid.generate()}>{item.Title}</div>
-              ))
-            }
-          </div>
-        ) : null
-        }
-
+          <ResultsContainer>
+            <ol>
+              {fetchedItems.movies.map(item => (
+                <MovieItem key={shortid.generate()}
+                title={item.Title}
+                rating={item.imdbRating}
+                year={item.Year}
+                />
+              ))}
+            </ol>
+          </ResultsContainer>
+        ) : null}
       </MovieResultsContainer>
     );
   }

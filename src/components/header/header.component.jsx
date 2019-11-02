@@ -2,9 +2,8 @@ import React from "react";
 
 import "../../sass/base/_variables.styles.scss";
 
-import {connect} from 'react-redux';
-// import { setMovieResults } from "../../redux/movie-results/movie-results.action";
-import {getResults} from '../../redux/movie-results/movie-results.utils';
+import { connect } from "react-redux";
+import { getResults } from "../../redux/movie-results/movie-results.utils";
 
 import {
   HeaderContainer,
@@ -12,29 +11,29 @@ import {
   InputField,
   SubmitButton
 } from "./header.styles";
-import { H1 } from "../../sass/base/_typography.styles";
+import { H1, PButton} from "../../sass/base/_typography.styles";
 
 class Header extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
-      inputValue: ''
-    }
+      inputValue: ""
+    };
   }
 
   render() {
     console.log(this.state.inputValue);
 
-    const handleChange = (e) => {
+    const handleChange = e => {
       this.setState({
         inputValue: e.target.value
-      })
-    } 
+      });
+    };
 
     const handleSubmit = e => {
       e.preventDefault();
-      const {setMovieResults} = this.props;
+      const { setMovieResults } = this.props;
       setMovieResults(this.state.inputValue);
     };
 
@@ -43,7 +42,7 @@ class Header extends React.Component {
         <H1>Movie Rank</H1>
         <FormContainer type="submit" onSubmit={handleSubmit}>
           <InputField onChange={handleChange}></InputField>
-          <SubmitButton>Search</SubmitButton>
+          <SubmitButton><PButton>Search</PButton></SubmitButton>
         </FormContainer>
       </HeaderContainer>
     );
@@ -52,6 +51,9 @@ class Header extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   setMovieResults: value => dispatch(getResults(value))
-})
+});
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Header);
