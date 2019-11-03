@@ -15,7 +15,8 @@ import { createStructuredSelector } from "reselect";
 import {
   MovieResultsContainer,
   LoadingContainer,
-  ResultsContainer
+  ResultsContainer, 
+  DetailsContainer
 } from "./movie-results.styles";
 import { H2 } from "../../sass/base/_typography.styles";
 
@@ -52,6 +53,11 @@ class MovieResults extends React.Component {
             </ol>
           </ResultsContainer>
         ) : null}
+        
+        <DetailsContainer>
+                
+        </DetailsContainer>
+      
       </MovieResultsContainer>
     );
   }

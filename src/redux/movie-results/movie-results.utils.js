@@ -25,11 +25,10 @@ export function getResults(inputValue) {
           //Here is the sorted array full of movies with details 
           fetchInfo.sort((a, b) => (a.imdbRating > b.imdbRating) ? -1 : 1);
           dispatch(fetchMoviesSuccess(fetchInfo));
-
-        //  return fetchInfo;
       }
       catch (error) {
           dispatch(fetchMoviesFailure(error));
         }
     }
-  }
+}
+

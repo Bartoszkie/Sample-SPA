@@ -30,7 +30,7 @@ export const FormContainer = styled.form`
 export const InputField = styled.input`
   text-align: left;
 
-  width: 12vw;
+  width: 30rem;
   height: 5rem;
 
   outline: none;
