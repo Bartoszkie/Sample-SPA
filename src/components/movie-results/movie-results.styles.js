@@ -16,8 +16,10 @@ export const MovieResultsContainer = styled.section`
   position: relative;
 
   @media only screen and (max-width: 37.5em) {
+    grid-row: 2 / 3;
+
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr min-content;
   }
 `;
 
@@ -56,7 +58,6 @@ export const ResultsContainer = styled.div`
     counter-reset: custom-styling;
 
     li {
-      height: 5.5rem;
       counter-increment: custom-styling;
 
       &::before {
@@ -69,7 +70,12 @@ export const ResultsContainer = styled.div`
 `;
 
 export const DetailsContainer = styled.div`
-    grid-column: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  background-color: transparent;
+
+  @media only screen and (max-width: 37.5em) {
+    grid-column: 1 / 2;
     grid-row: 2 / 3;
-    background-color: transparent;
+  }
 `;
