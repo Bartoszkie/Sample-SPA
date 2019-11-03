@@ -18,3 +18,8 @@ export const fetchMoviesFailure = error => ({
     type: MovieResultsTypes.FETCH_MOVIES_FAILURE, 
     payload: {error}
 })
+
+export const movieDetails = movie => ({
+    type: MovieResultsTypes.FETCH_MOVIE_DETAILS, 
+    payload: movie
+})

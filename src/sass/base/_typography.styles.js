@@ -16,5 +16,6 @@ export const H4 = styled.h1`
 `;
 
 export const PButton = styled.p`
+  display: inline-block;
   font-family: 'Staatliches', cursive;
 `;

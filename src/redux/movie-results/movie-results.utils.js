@@ -32,3 +32,11 @@ export function getResults(inputValue) {
     }
 }
 
+
+export const addMovieInfo = (movies, movieToDisplay) => {
+    const isMovie = movies.find(item => item.imdbID === movieToDisplay.imdbID);
+    if(isMovie) return movieToDisplay;
+} 
+
+
+

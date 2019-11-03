@@ -8,7 +8,9 @@ export const MovieResultsContainer = styled.section`
 
   display: grid;
   grid-gap: 5rem;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-content: center;
 
   position: relative;
 `;
@@ -53,5 +55,6 @@ export const ResultsContainer = styled.div`
 `;
 
 export const DetailsContainer = styled.div`
-  
+    grid-column: 2 / 3;
+    background-color: transparent;
 `;

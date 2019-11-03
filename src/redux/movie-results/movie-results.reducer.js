@@ -1,10 +1,11 @@
 import { MovieResultsTypes } from "./movie-results.types";
-import { getResults } from "./movie-results.utils";
+import { getResults, addMovieInfo } from "./movie-results.utils";
 
 const INITIAL_STATE = {
   fetchedItems: [],
   loading: false,
-  error: null
+  error: null, 
+  movieDetails: []
 };
 
 const MovieResultsReducer = (state = INITIAL_STATE, action) => {
@@ -13,7 +14,8 @@ const MovieResultsReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: true,
-        error: null
+        error: null, 
+        movieDetails: []
       };
     case MovieResultsTypes.FETCH_MOVIES_SUCCES:
       return {
@@ -27,6 +29,11 @@ const MovieResultsReducer = (state = INITIAL_STATE, action) => {
         loading: false, 
         error: action.payload, 
         fetchedItems: []
+    }
+    case MovieResultsTypes.FETCH_MOVIE_DETAILS: 
+    return {
+      ...state, 
+      movieDetails: action.payload
     }
     default:
       return state;
