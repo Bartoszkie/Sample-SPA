@@ -1,11 +1,12 @@
 import React from 'react';
 
-import {MovieItemContainer} from './movie-item.styles';
+import {MovieItemContainer, InfoItem} from './movie-item.styles';
 
-const MovieItem = () => {
+const MovieItem = (props) => {
     return (
         <MovieItemContainer>
-            
+            <InfoItem>{props.title} {props.year}</InfoItem>
+            <InfoItem>{props.rating}</InfoItem>
         </MovieItemContainer>
     );
 }

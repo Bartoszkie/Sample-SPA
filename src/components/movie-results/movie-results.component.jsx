@@ -1,47 +1,72 @@
 import React from "react";
 
+import shortid from "shortid";
+
+import MovieItem from "../movie-item/movie-item.component";
+
 import { connect } from "react-redux";
-import { setMovieResults } from "../../redux/movie-results/movie-results.action";
-import {itemsSelector} from '../../redux/movie-results/movie-results.selector';
+import {
+  selectMoviesArray,
+  selectMoviesLoading,
+  selectErrors
+} from "../../redux/movie-results/movie-results.selector";
 
-import {createStructuredSelector} from 'reselect';
+import { createStructuredSelector } from "reselect";
+import {
+  MovieResultsContainer,
+  LoadingContainer,
+  ResultsContainer, 
+  DetailsContainer
+} from "./movie-results.styles";
+import { H2 } from "../../sass/base/_typography.styles";
 
-import MovieCart from "../movie-cart/movie-cart.component";
+class MovieResults extends React.Component {
+  render() {
+    const { fetchedItems, loading, errors } = this.props;
 
-import { MovieResultsContainer } from "./movie-results.styles";
+    console.log("movie-results container: ", fetchedItems.movies);
 
-const MovieResults = ({movieResults}) => {
-  console.log(movieResults);
+    return (
+      <MovieResultsContainer>
+        {loading === true ? (
+          <LoadingContainer>
+            <H2>Loading...</H2>
+          </LoadingContainer>
+        ) : null}
 
-  (function fetchData() {
-    const API_KEY = "d14e23d0";
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&t=avengers`)
-      .then(result => result.json())
-      .then(result => console.log(result))
-      .then(result => setMovieResults(result));
-  }())
+        {errors !== null ? (
+          <LoadingContainer>
+            <H2>No results :(</H2>
+          </LoadingContainer>
+        ) : null}
 
-  return (
-    <MovieResultsContainer>
-      <MovieCart />
-      <MovieCart />
-      <MovieCart />
-      <MovieCart />
-      <MovieCart />
-      <MovieCart />
-    </MovieResultsContainer>
-  );
-};
+        {fetchedItems.length !== 0 && loading === false ? (
+          <ResultsContainer>
+            <ol>
+              {fetchedItems.movies.map(item => (
+                <MovieItem key={shortid.generate()}
+                title={item.Title}
+                rating={item.imdbRating}
+                year={item.Year}
+                />
+              ))}
+            </ol>
+          </ResultsContainer>
+        ) : null}
+        
+        <DetailsContainer>
+                
+        </DetailsContainer>
+      
+      </MovieResultsContainer>
+    );
+  }
+}
 
 const mapStateToProps = createStructuredSelector({
-  movieResults: itemsSelector
+  fetchedItems: selectMoviesArray,
+  loading: selectMoviesLoading,
+  errors: selectErrors
 });
 
-const mapDispatchToProps = dispatch => ({
-  setMovieResults: items => dispatch(setMovieResults(items))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieResults);
+export default connect(mapStateToProps)(MovieResults);
