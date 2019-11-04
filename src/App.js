@@ -1,10 +1,21 @@
 import React from 'react';
 
-function App() {
+//STYLES
+import '../src/sass/main.scss';
+import {AppContainer} from '../src/sass/base/components-styles/app.styles';
+
+//COMPONENTS
+import Header from './components/header/header.component';
+import MovieResults from './components/movie-results/movie-results.component';
+import Footer from './components/footer/footer.component';
+
+const App = () => {
   return (
-    <div className="App">
-      <p>Test of running REact</p>
-    </div>
+    <AppContainer>
+        <Header/>
+        <MovieResults/>
+        <Footer/>
+    </AppContainer>
   );
 }
 
