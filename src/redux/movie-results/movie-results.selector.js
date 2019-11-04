@@ -16,3 +16,8 @@ export const selectErrors = createSelector(
     [selectMovies], 
     movieResults => movieResults.error
 );
+
+export const selectMovieInfo = createSelector(
+    [selectMovies], 
+    movieResults => movieResults.movieDetails
+);

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MovieItemContainer = styled.li`
-    padding: .5rem .9rem;
+    padding: .9rem 1.2rem;
 
     background-color: white;
 

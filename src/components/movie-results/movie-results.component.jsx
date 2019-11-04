@@ -1,30 +1,44 @@
 import React from "react";
-
 import shortid from "shortid";
 
+//COMPONENTS
 import MovieItem from "../movie-item/movie-item.component";
+import MovieDetails from "../movie-details/movie-details.component";
 
+//REDUX
 import { connect } from "react-redux";
 import {
   selectMoviesArray,
   selectMoviesLoading,
-  selectErrors
+  selectErrors,
+  selectMovieInfo
 } from "../../redux/movie-results/movie-results.selector";
 
+import { movieDetails } from "../../redux/movie-results/movie-results.action";
+
 import { createStructuredSelector } from "reselect";
+
+//STYLES
 import {
   MovieResultsContainer,
   LoadingContainer,
-  ResultsContainer, 
+  ResultsContainer,
   DetailsContainer
 } from "./movie-results.styles";
+
 import { H2 } from "../../sass/base/_typography.styles";
 
 class MovieResults extends React.Component {
   render() {
-    const { fetchedItems, loading, errors } = this.props;
+    const {
+      fetchedItems,
+      loading,
+      errors,
+      movieDetails,
+      showMovieInfo
+    } = this.props;
 
-    console.log("movie-results container: ", fetchedItems.movies);
+    console.log("movie-results info: ", movieDetails);
 
     return (
       <MovieResultsContainer>
@@ -44,20 +58,25 @@ class MovieResults extends React.Component {
           <ResultsContainer>
             <ol>
               {fetchedItems.movies.map(item => (
-                <MovieItem key={shortid.generate()}
-                title={item.Title}
-                rating={item.imdbRating}
-                year={item.Year}
+                <MovieItem
+                  key={shortid.generate()}
+                  title={item.Title}
+                  rating={item.imdbRating}
+                  year={item.Year}
+                  onClick={() => showMovieInfo(item)}
                 />
               ))}
             </ol>
           </ResultsContainer>
         ) : null}
-        
-        <DetailsContainer>
-                
-        </DetailsContainer>
-      
+
+        {movieDetails.length !== 0 && loading !== true ? (
+          <DetailsContainer>
+            { 
+              <MovieDetails poster={movieDetails.Poster} description={movieDetails.Plot} />
+            }
+          </DetailsContainer>
+        ) : null}
       </MovieResultsContainer>
     );
   }
@@ -66,7 +85,15 @@ class MovieResults extends React.Component {
 const mapStateToProps = createStructuredSelector({
   fetchedItems: selectMoviesArray,
   loading: selectMoviesLoading,
-  errors: selectErrors
+  errors: selectErrors,
+  movieDetails: selectMovieInfo
 });
 
-export default connect(mapStateToProps)(MovieResults);
+const mapDispatchToProps = dispatch => ({
+  showMovieInfo: item => dispatch(movieDetails(item))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MovieResults);

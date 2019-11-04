@@ -10,6 +10,8 @@ export const HeaderContainer = styled.section`
       1fr
     );
 
+  grid-template-rows: repeat(2, min-content);
+
   color: #fff;
 
   background-color: transparent;
@@ -18,13 +20,26 @@ export const HeaderContainer = styled.section`
     font-family: "Lobster", cursive;
     color: #950740;
     grid-column: 2 / 4;
+    grid-row: 1 / 2;
+
+    @media only screen and (max-width: 75em) {
+      grid-column: 1 / 11;
+      grid-row: 1 / 2;
+      justify-self: center;
+    }
   }
 `;
 
 export const FormContainer = styled.form`
   justify-self: center;
   align-self: center;
-  grid-column: 5 / 7;
+  grid-column: 4 / 7;
+  grid-row: 1 / 2;
+
+  @media only screen and (max-width: 75em) {
+    grid-column: 1 / 11;
+    grid-row: 2 / 3;
+  }
 `;
 
 export const InputField = styled.input`
@@ -35,7 +50,6 @@ export const InputField = styled.input`
 
   outline: none;
 
-
   padding-left: 2rem;
 
   border-left: 0.2rem solid #950740;
@@ -44,6 +58,10 @@ export const InputField = styled.input`
   border-bottom: 0.2rem solid #950740;
 
   border-radius: 10rem 0 0 10rem;
+
+  @media only screen and (max-width: 37.5em) {
+    width: 18rem;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -53,7 +71,7 @@ export const SubmitButton = styled.button`
   background-color: transparent;
   color: white;
 
-  width: 5vw;
+  width: 10rem;
   height: 5rem;
 
   cursor: pointer;
