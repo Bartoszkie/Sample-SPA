@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MovieDetailsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 5rem 40rem 5rem;
+    grid-template-rows: 5rem 1fr 5rem;
     column-gap: 2rem;
 `;
 

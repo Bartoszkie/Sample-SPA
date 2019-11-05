@@ -74,6 +74,11 @@ export const DetailsContainer = styled.div`
   grid-row: 1 / 2;
   background-color: transparent;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   @media only screen and (max-width: 37.5em) {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
