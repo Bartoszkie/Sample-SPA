@@ -5,13 +5,15 @@ import "../../sass/base/_variables.styles.scss";
 import { connect } from "react-redux";
 import { getResults } from "../../redux/movie-results/movie-results.utils";
 
+import H from "../typography/H.component";
+
 import {
   HeaderContainer,
   FormContainer,
   InputField,
   SubmitButton
 } from "./header.styles";
-import { H1, PButton} from "../../sass/base/_typography.styles";
+import { H1, PButton } from "../../sass/base/_typography.styles";
 
 class Header extends React.Component {
   constructor() {
@@ -39,10 +41,12 @@ class Header extends React.Component {
 
     return (
       <HeaderContainer>
-        <H1>Movie Rank</H1>
+        <H size={"big"} text={"Movie Rank"}></H>
         <FormContainer type="submit" onSubmit={handleSubmit}>
           <InputField onChange={handleChange}></InputField>
-          <SubmitButton><PButton>Search</PButton></SubmitButton>
+          <SubmitButton>
+            <PButton>Search</PButton>
+          </SubmitButton>
         </FormContainer>
       </HeaderContainer>
     );
@@ -53,7 +57,4 @@ const mapDispatchToProps = dispatch => ({
   setMovieResults: value => dispatch(getResults(value))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Header);
+export default connect(null, mapDispatchToProps)(Header);

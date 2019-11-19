@@ -6,7 +6,7 @@ import {
   MovieDesctipion
 } from "./movie-details.styles";
 
-import { H2 } from "../../sass/base/_typography.styles";
+import H from '../typography/H.component';
 
 const MovieDetails = props => {
   return (
@@ -15,7 +15,7 @@ const MovieDetails = props => {
         <img src={props.poster} alt=" "></img>
       </Poster>
       <MovieDesctipion>
-        <H2>{props.description}</H2>
+        <H size={"medium"} text={props.description}></H>
       </MovieDesctipion>
     </MovieDetailsContainer>
   );

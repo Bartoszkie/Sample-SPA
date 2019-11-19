@@ -1,5 +1,4 @@
 import { MovieResultsTypes } from "./movie-results.types";
-import { getResults, addMovieInfo } from "./movie-results.utils";
 
 const INITIAL_STATE = {
   fetchedItems: [],

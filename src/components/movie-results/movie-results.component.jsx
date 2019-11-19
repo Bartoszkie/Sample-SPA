@@ -26,7 +26,7 @@ import {
   DetailsContainer
 } from "./movie-results.styles";
 
-import { H2 } from "../../sass/base/_typography.styles";
+import H from '../typography/H.component';
 
 class MovieResults extends React.Component {
   render() {
@@ -37,20 +37,18 @@ class MovieResults extends React.Component {
       movieDetails,
       showMovieInfo
     } = this.props;
-
-    console.log("movie-results info: ", movieDetails);
-
+    
     return (
       <MovieResultsContainer>
         {loading === true ? (
           <LoadingContainer>
-            <H2>Loading...</H2>
+            <H size={"medium"} text={'Loading...'}></H>
           </LoadingContainer>
         ) : null}
 
         {errors !== null ? (
           <LoadingContainer>
-            <H2>No results :(</H2>
+          <H size={"medium"} text={'No results'}></H>
           </LoadingContainer>
         ) : null}
 
