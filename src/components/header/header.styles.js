@@ -33,7 +33,7 @@ export const HeaderContainer = styled.section`
 export const FormContainer = styled.form`
   justify-self: center;
   align-self: center;
-  grid-column: 4 / 7;
+  grid-column: 5 / 7;
   grid-row: 1 / 2;
 
   @media only screen and (max-width: 75em) {
