@@ -10,7 +10,7 @@ export const H1 = styled.h1`
 `;
 
 export const H2 = styled.h2`
-  font-size: 4.5rem;
+  font-size: 1.5rem;
   font-weight: 400;
 
   @media only screen and (max-width: 37.5em) {

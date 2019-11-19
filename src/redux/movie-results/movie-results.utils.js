@@ -1,7 +1,7 @@
 //API CALL - omdbapi 
 import {fetchMoviesBegin, fetchMoviesSuccess, fetchMoviesFailure} from '../movie-results/movie-results.action';
 
-const API_KEY = "d14e23d0";
+const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
 export function getResults(inputValue) {
     return async (dispatch) => {
