@@ -7,7 +7,7 @@ const INITIAL_STATE = {
   movieDetails: []
 };
 
-const MovieResultsReducer = (state = INITIAL_STATE, action) => {
+export const MovieResultsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case MovieResultsTypes.FETCH_MOVIES_BEGIN:
       return {

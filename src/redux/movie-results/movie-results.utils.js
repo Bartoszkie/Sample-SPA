@@ -5,9 +5,6 @@ const API_KEY = process.env.REACT_APP_OMDB_API_KEY;
 
 export function getResults(inputValue) {
     return async (dispatch) => {
-
-      dispatch(fetchMoviesBegin());
-
       try {
           dispatch(fetchMoviesBegin());
 
