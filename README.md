@@ -10,9 +10,9 @@ App is divided to small components. Code reusability should be at high level. Fo
  - test folder - some basic unit tests of components / redux state managment
 
 ### Purpose on how app should work: 
-App is named "Movie Rank" - it gives user gradual ranking of movie he typed. When he clicks on some movie label 
-(should contain: position number / movie title / rating) on right/bottom side of app poster (if avalible) and 
-short movie description should appear. 
+App is named "Movie Rank" - it returns for user gradual ranking of movie he typed and submited to search. 
+When he clicks on some movie label (should contain: position number / movie title / rating) on right/bottom
+side of app poster (if avalible) and short movie description should appear. 
 
 ### Tehnologies used: 
 This app is created with React.js ^16.11 with addiction of Redux and Sass.  
