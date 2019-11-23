@@ -4,7 +4,8 @@ So, this app was made with non specified purpose. It should contain 2 branches:
 - base (development branch on which new features and repairs are pushed)
 
 ### Architecture: 
-App is divided to small components. Code reusability should be at high level. Folder structure is separated on: 
+App was divided to as small and reusable components as possible. Code reusability should be at high level.<br>
+Folder structure is separated on: 
  - statefull and stateless components
  - redux folder - state mangment
  - test folder - some basic unit tests of components / redux state managment
